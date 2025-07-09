@@ -1,25 +1,81 @@
 import { useState } from 'react';
+import '../styles/dashboard.css';
 
 const Controls = () => {
-	const clientId = 'farm-bot-study'; // You could make this configurable
-	const birdsong = 'Alert-nature (birdsong) (5s).wav';
-	const woodpeckerDrumming = 'Alert-nature (woodpecker-drumming) (5s).wav';
-	const koel = 'Completed-nature (koel) (5s).wav';
+	const clientId = 'farm-bot-study';
+
+	const sounds = [
+		{
+			label: 'Birdsong',
+			emoji: '🐦',
+			file: 'Alert-nature (birdsong) (5s).wav',
+		},
+		{
+			label: 'Woodpecker',
+			emoji: '🪵',
+			file: 'Alert-nature (woodpecker-drumming) (5s).wav',
+		},
+		{
+			label: 'Koel',
+			emoji: '🕊️',
+			file: 'Completed-nature (koel) (5s).wav',
+		},
+		{
+			label: 'Forklift',
+			emoji: '🚜',
+			file: 'Alert-trad (forklift-reversing) (5s).wav',
+		},
+		{
+			label: 'Owl',
+			emoji: '🦉',
+			file: 'Completed-nature (owl_hooting) (5s).wav',
+		},
+		{
+			label: 'Chimes',
+			emoji: '🔔',
+			file: 'Completed-nature (wind_chimes) (5s).wav',
+		},
+		{
+			label: 'Beep 1',
+			emoji: '🔊',
+			file: 'Completed-trad (beep) (5s).wav',
+		},
+		{
+			label: 'Beep 2',
+			emoji: '🔊',
+			file: 'Completed-trad (beep).wav',
+		},
+		{
+			label: 'Cricket',
+			emoji: '🦗',
+			file: 'Idle-nature (field_cricket) (5s).wav',
+		},
+		{
+			label: 'Waves',
+			emoji: '🌊',
+			file: 'Idle-nature (Ocean_waves) (5s).wav',
+		},
+		{
+			label: 'Wind',
+			emoji: '🍃',
+			file: 'Idle-nature (wind) (5s).wav',
+		},
+		{
+			label: 'Hums',
+			emoji: '🎶',
+			file: 'Idle-nature (soft_hums) (5s).wav',
+		},
+	];
+
 	const sendAudioCommand = async (sound: string) => {
-		console.log(`Sending audio command: ${sound} to client ${clientId}`);
 		try {
 			const response = await fetch('/api/send-audio', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ clientId, sound }),
 			});
-			console.log(
-				`Audio command ${sound} sent successfully to client ${clientId}`
-			);
-			console.log(response);
-			if (!response.ok) {
-				throw new Error('Failed to send audio command');
-			}
+			if (!response.ok) throw new Error('Failed to send audio command');
+			console.log(`Audio command ${sound} sent`);
 		} catch (error) {
 			console.error('Error sending audio command:', error);
 		}
@@ -28,28 +84,17 @@ const Controls = () => {
 	return (
 		<div className="robot-dashboard">
 			<h1>🕹️ Control Panel</h1>
-
-			<div className="button-group">
-				<button
-					onClick={() => sendAudioCommand(birdsong)}
-					className="control-button"
-				>
-					Birdsong
-				</button>
-
-				<button
-					onClick={() => sendAudioCommand(woodpeckerDrumming)}
-					className="control-button"
-				>
-					Woodpecker Drumming
-				</button>
-
-				<button
-					onClick={() => sendAudioCommand(koel)}
-					className="control-button"
-				>
-					Koel
-				</button>
+			<div className="button-grid">
+				{sounds.map(({ label, emoji, file }) => (
+					<button
+						key={file}
+						onClick={() => sendAudioCommand(file)}
+						className="control-square"
+					>
+						<span className="emoji">{emoji}</span>
+						<span className="label">{label}</span>
+					</button>
+				))}
 			</div>
 		</div>
 	);
