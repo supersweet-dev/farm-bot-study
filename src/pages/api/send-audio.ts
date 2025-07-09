@@ -13,8 +13,8 @@ export const POST: APIRoute = async ({ request }) => {
 	console.log('Received request to send audio command');
 	const { clientId, sound } = await request.json();
 
-	const channelName = clientId; // e.g. "farm-bot-study"
-	const eventName = 'play-audio'; // ✅ NOT client-* prefixed
+	const channelName = clientId;
+	const eventName = 'play-audio';
 
 	await pusher.trigger(channelName, eventName, { sound });
 

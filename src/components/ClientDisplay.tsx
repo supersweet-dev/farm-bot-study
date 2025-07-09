@@ -36,24 +36,35 @@ const ClientDisplay = () => {
 	}, [ready, clientId]);
 
 	return (
-		<div className="client-display">
-			<img src="/robot-face.png" width="200" alt="Robot Face" />
-			{!ready && (
-				<button
-					onClick={() => {
-						if (audioRef.current) {
-							// "Unlock" autoplay by playing a silent sound
-							audioRef.current.src = '/audio/silence.mp3'; // use a real silent file
-							audioRef.current.play().catch(() => {});
-						}
-						setReady(true);
-					}}
-					style={{ marginTop: '1rem', fontSize: '1.2rem' }}
-				>
-					Start Session
-				</button>
+		<div className={`client-display ${ready ? 'ready' : ''}`}>
+			{!ready ? (
+				<div className="prompt">
+					<img
+						src="/robot-face.png"
+						alt="Robot Face"
+						className="robot-prompt"
+					/>
+					<button
+						className="start-button"
+						onClick={() => {
+							if (audioRef.current) {
+								audioRef.current.src = '/audio/silence.mp3';
+								audioRef.current.play().catch(() => {});
+							}
+							setReady(true);
+						}}
+					>
+						Start Session
+					</button>
+				</div>
+			) : (
+				<img
+					src="/robot-face.png"
+					className="robot-fullscreen"
+					alt="Robot Face Fullscreen"
+				/>
 			)}
-			{/* Hidden persistent audio element */}
+
 			<audio ref={audioRef} style={{ display: 'none' }} />
 		</div>
 	);

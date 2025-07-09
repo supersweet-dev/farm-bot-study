@@ -1,0 +1,56 @@
+:root {
+	--bg: #000;
+	--accent: #ff006e;
+	--text: #fff;
+	--border: #fff;
+}
+
+.client-display {
+	background-color: var(--bg);
+	color: var(--text);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	position: relative;
+	font-family: 'Inter', sans-serif;
+}
+
+.prompt {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+}
+
+.robot-prompt {
+	width: 200px;
+	max-width: 80vw;
+}
+
+.start-button {
+	background-color: var(--accent);
+	color: #fff;
+	font-size: 1.5rem;
+	padding: 1rem 2rem;
+	border: 3px solid var(--border);
+	border-radius: 1rem;
+	box-shadow: 6px 6px 0 var(--border);
+	cursor: pointer;
+	transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+.start-button:hover {
+	background-color: #fff;
+	color: var(--bg);
+	transform: translate(-3px, -3px);
+	box-shadow: 8px 8px 0 var(--accent);
+}
+
+.robot-fullscreen {
+	object-fit: contain;
+	width: 100vw;
+	height: 100vh;
+}

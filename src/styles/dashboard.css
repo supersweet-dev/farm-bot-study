@@ -80,3 +80,34 @@ body {
 	font-size: 0.9rem;
 	word-break: break-word;
 }
+
+.go-client-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 3rem;
+}
+
+.go-client-button {
+	background-color: #3a86ff;
+	color: white;
+	font-weight: bold;
+	font-size: 1.2rem;
+	padding: 1rem 2rem;
+	border: 3px solid black;
+	border-radius: 1rem;
+	text-decoration: none;
+	box-shadow: 6px 6px 0 black;
+	transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+.go-client-button:hover {
+	background-color: #ff006e;
+	transform: translate(-2px, -2px);
+	box-shadow: 8px 8px 0 black;
+}
+
+.go-client-button:active {
+	transform: translate(2px, 2px);
+	box-shadow: 2px 2px 0 black;
+	background-color: #8338ec;
+}
