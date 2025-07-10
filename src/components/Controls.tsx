@@ -33,7 +33,7 @@ const Controls = () => {
 		{
 			label: 'Chimes',
 			emoji: '🔔',
-			file: 'Completed-nature (wind_chimes) (5s).wav',
+			file: 'Completed-nature (wind_chimes).wav',
 		},
 		{
 			label: 'Beep 1',
@@ -63,7 +63,7 @@ const Controls = () => {
 		{
 			label: 'Hums',
 			emoji: '🎶',
-			file: 'Idle-nature (soft_hums) (5s).wav',
+			file: 'Idle-trad (soft_hums) (5s).wav',
 		},
 	];
 
