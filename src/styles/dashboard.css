@@ -1,11 +1,13 @@
 :root {
 	--bg: #e6dc98;
-	--card-bg: #b6e0b1;
+	--card-bg: #eacd56;
 	--primary: #ff006e;
 	--secondary: #8338ec;
 	--accent: #3a86ff;
 	--text: #1a1a1a;
 	--border: #1a1a1a;
+	--nature: #70c473;
+	--trad: #4e9dd9;
 }
 
 body {
@@ -35,7 +37,7 @@ body {
 
 .button-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+	grid-template-columns: repeat(3, 1fr);
 	gap: 1rem;
 	justify-items: center;
 }
@@ -43,7 +45,6 @@ body {
 .control-square {
 	width: 100px;
 	aspect-ratio: 1 / 1;
-	background-color: var(--primary);
 	color: #fff;
 	font-weight: bold;
 	border: 3px solid var(--border);
@@ -57,6 +58,13 @@ body {
 	transition: transform 0.1s ease, background-color 0.2s ease;
 	text-align: center;
 	padding: 0.5rem;
+}
+
+.control-square.nature {
+	background-color: var(--nature);
+}
+.control-square.trad {
+	background-color: var(--trad);
 }
 
 .control-square:hover {
