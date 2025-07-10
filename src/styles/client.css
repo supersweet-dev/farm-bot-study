@@ -5,6 +5,12 @@
 	--border: #fff;
 }
 
+body {
+	background: var(--bg);
+	margin: 0;
+	padding: 0;
+}
+
 .client-display {
 	background-color: var(--bg);
 	color: var(--text);
